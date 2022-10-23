@@ -21,7 +21,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n      \"vehicleType\":\"TRUCK\",\n      \"licence\":\"33\",\n      \"colour\":\"Red\"\n\n}",
+					"raw": "{\n      \"vehicleType\":\"TRUCK\",\n      \"plateNumber\":\"33\",\n      \"colour\":\"Red\"\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -55,7 +55,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n   \n      \"vehicleLicence\":\"33\"\n\n}",
+					"raw": "{\n   \n      \"plateNumber\":\"33\"\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
