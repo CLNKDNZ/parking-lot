@@ -42,15 +42,8 @@ public class GarageServiceImpl implements GarageService {
     @Override
     public LeaveResponseDTO leave(String plateNumber) {
         Vehicle tobeLeaveVehicle = findVehicleByPlateNumber(plateNumber);
-        checkTobeLeaveVehicle(plateNumber, tobeLeaveVehicle);
         tobeLeaveVehicle.leaveVehicle(garage.getSlotMap());
         return new LeaveResponseDTO(tobeLeaveVehicle);
-    }
-
-    private static void checkTobeLeaveVehicle(String plateNumber, Vehicle tobeLeaveVehicle) {
-        if (isNull(tobeLeaveVehicle)) {
-            throw new NotFoundVehicleException(plateNumber);
-        }
     }
 
     @Override
@@ -87,7 +80,7 @@ public class GarageServiceImpl implements GarageService {
         Optional<Slot> filteredSlots = garage.getSlotMap().values().stream()
                 .filter(vehicle -> filterVehicle(plateNumber, vehicle))
                 .findAny();
-        return filteredSlots.get().getVehicle();
+        return filteredSlots.orElseThrow(() -> new NotFoundVehicleException(plateNumber)).getVehicle();
     }
 
     private static boolean filterVehicle(String plateNumber, Slot vehicle) {
