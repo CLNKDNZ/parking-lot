@@ -87,7 +87,7 @@ public class GarageServiceImpl implements GarageService {
         if (!isNull(vehicle.getVehicle())) {
             return vehicle.getVehicle().getLicence().equalsIgnoreCase(vehicleLicence);
         } else {
-            throw new NotFoundVehicleException(vehicleLicence);
+            return false;
         }
     }
 
