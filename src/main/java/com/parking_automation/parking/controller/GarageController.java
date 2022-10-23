@@ -28,7 +28,7 @@ public class GarageController {
 
     @PutMapping("/leave")
     public ResponseEntity<LeaveResponseDTO> leave(@Valid @RequestBody LeaveRequest leaveRequest) {
-        var leaveResponseDTO = garageService.leave(leaveRequest.getVehicleLicence());
+        var leaveResponseDTO = garageService.leave(leaveRequest.getPlateNumber());
         return new ResponseEntity(leaveResponseDTO, HttpStatus.ACCEPTED);
     }
 

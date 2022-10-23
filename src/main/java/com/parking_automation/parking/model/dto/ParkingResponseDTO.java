@@ -17,7 +17,7 @@ public class ParkingResponseDTO {
         String formattedString = String.format("The %s %s with the number plate %s is parked in slots %s",
                                                 vehicle.getColour(),
                                                 vehicle.getVehicleType().name(),
-                                                vehicle.getLicence(),
+                                                vehicle.getPlateNumber(),
                                                 vehicle.getSlots().stream().map(Object::toString)
                                                                             .collect(Collectors.joining(", ")));
         this.message = formattedString;

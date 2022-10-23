@@ -15,7 +15,7 @@ public abstract class Vehicle {
     protected List<String> slots;
 
     @Setter
-    protected String licence;
+    protected String plateNumber;
 
     protected int vehicleSize;
 
@@ -36,7 +36,7 @@ public abstract class Vehicle {
     public void leaveVehicle(Map<String, Slot> garage) {
         for (Map.Entry<String, Slot> entry : garage.entrySet()) {
             var vehicle = entry.getValue().getVehicle();
-            if (!isNull(vehicle) && vehicle.getLicence().equals(this.getLicence())) {
+            if (!isNull(vehicle) && vehicle.getPlateNumber().equals(this.getPlateNumber())) {
                 entry.getValue().setVehicle(null);
                 entry.getValue().setAvailable(true);
             }

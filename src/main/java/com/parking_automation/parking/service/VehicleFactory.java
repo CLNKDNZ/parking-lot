@@ -12,17 +12,17 @@ public class VehicleFactory {
 
         Vehicle vehicle;
         var vehicleType = parkingRequest.getVehicleType();
-        var vehicleLicence = parkingRequest.getLicence();
+        var plateNumber = parkingRequest.getPlateNumber();
         var vehicleColour = parkingRequest.getColour();
 
         if (vehicleType.equals(VehicleType.CAR.name())) {
-            vehicle = new Car(vehicleColour, vehicleLicence);
+            vehicle = new Car(vehicleColour, plateNumber);
 
         } else if (vehicleType.equals(VehicleType.JEEP.name())) {
-            vehicle = new Jeep(vehicleColour, vehicleLicence);
+            vehicle = new Jeep(vehicleColour, plateNumber);
 
         } else if (vehicleType.equals(VehicleType.TRUCK.name())) {
-            vehicle = new Truck(vehicleColour, vehicleLicence);
+            vehicle = new Truck(vehicleColour, plateNumber);
 
         } else {
             throw new RuntimeException();

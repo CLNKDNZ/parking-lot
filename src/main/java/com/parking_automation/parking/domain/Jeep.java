@@ -5,10 +5,10 @@ import com.parking_automation.parking.constant.VehicleType;
 public class Jeep extends Vehicle {
     private static int JEEP_SLOT_SIZE = 2;
 
-    public Jeep(String colour, String licence) {
+    public Jeep(String colour, String plateNumber) {
         super.vehicleSize = JEEP_SLOT_SIZE;
         super.vehicleType = VehicleType.JEEP;
         super.colour = colour;
-        super.licence = licence;
+        super.plateNumber = plateNumber;
     }
 }

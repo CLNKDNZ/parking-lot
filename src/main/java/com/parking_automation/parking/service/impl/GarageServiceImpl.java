@@ -33,17 +33,24 @@ public class GarageServiceImpl implements GarageService {
         Vehicle vehicle = VehicleFactory.createVehicle(parkingRequest);
         int vehicleSize = vehicle.getVehicleSize();
         List<String> slots = findSlotListForVehicle(garage.getSlotMap(), vehicleSize);
-        checkVehicleIsExist(vehicle.getLicence());
+        checkVehicleIsExist(vehicle.getPlateNumber());
         checkGarageStatus(slots);
         vehicle.parkVehicle(slots, vehicle, garage.getSlotMap());
         return new ParkingResponseDTO(vehicle);
     }
 
     @Override
-    public LeaveResponseDTO leave(String vehicleLicence) {
-        Vehicle tobeLeaveVehicle = findVehicleByLicence(vehicleLicence);
+    public LeaveResponseDTO leave(String plateNumber) {
+        Vehicle tobeLeaveVehicle = findVehicleByPlateNumber(plateNumber);
+        checkTobeLeaveVehicle(plateNumber, tobeLeaveVehicle);
         tobeLeaveVehicle.leaveVehicle(garage.getSlotMap());
         return new LeaveResponseDTO(tobeLeaveVehicle);
+    }
+
+    private static void checkTobeLeaveVehicle(String plateNumber, Vehicle tobeLeaveVehicle) {
+        if (isNull(tobeLeaveVehicle)) {
+            throw new NotFoundVehicleException(plateNumber);
+        }
     }
 
     @Override
@@ -76,16 +83,16 @@ public class GarageServiceImpl implements GarageService {
         return availableSlots;
     }
 
-    private Vehicle findVehicleByLicence(String vehicleLicence) {
+    private Vehicle findVehicleByPlateNumber(String plateNumber) {
         Optional<Slot> filteredSlots = garage.getSlotMap().values().stream()
-                .filter(vehicle -> filterVehicle(vehicleLicence, vehicle))
+                .filter(vehicle -> filterVehicle(plateNumber, vehicle))
                 .findAny();
         return filteredSlots.get().getVehicle();
     }
 
-    private static boolean filterVehicle(String vehicleLicence, Slot vehicle) {
+    private static boolean filterVehicle(String plateNumber, Slot vehicle) {
         if (!isNull(vehicle.getVehicle())) {
-            return vehicle.getVehicle().getLicence().equalsIgnoreCase(vehicleLicence);
+            return vehicle.getVehicle().getPlateNumber().equalsIgnoreCase(plateNumber);
         } else {
             return false;
         }
@@ -96,15 +103,15 @@ public class GarageServiceImpl implements GarageService {
             throw new GarageIsFullException();
     }
 
-    private void checkVehicleIsExist(String vehicleLicence) {
+    private void checkVehicleIsExist(String plateNumber) {
         var isExist = garage.getSlotMap().values().stream().anyMatch(x -> {
             if (!isNull(x.getVehicle()))
-                return x.getVehicle().getLicence().equalsIgnoreCase(vehicleLicence);
+                return x.getVehicle().getPlateNumber().equalsIgnoreCase(plateNumber);
             else
                 return false;
         });
 
         if (isExist)
-            throw new VehicleIsExistException(vehicleLicence);
+            throw new VehicleIsExistException(plateNumber);
     }
 }

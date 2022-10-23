@@ -12,7 +12,7 @@ public class ParkingRequest {
     @NotBlank
     private String vehicleType;
     @NotBlank
-    private String licence;
+    private String plateNumber;
     @NotBlank
     private String colour;
 

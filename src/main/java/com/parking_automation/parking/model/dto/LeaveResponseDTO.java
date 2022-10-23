@@ -1,6 +1,5 @@
 package com.parking_automation.parking.model.dto;
 
-import com.parking_automation.parking.constant.VehicleType;
 import com.parking_automation.parking.domain.Vehicle;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +21,7 @@ public class LeaveResponseDTO {
         var formattedMessage = String.format("The %s %s with the number plate %s left from [%s] slots",
                 leavedVehicleDetail.getColour(),
                 leavedVehicleDetail.getVehicleType().name(),
-                leavedVehicleDetail.getLicence(),
+                leavedVehicleDetail.getPlateNumber(),
                 leavedVehicleDetail.getSlots().stream().map(Object::toString)
                         .collect(Collectors.joining(", "))
         );
