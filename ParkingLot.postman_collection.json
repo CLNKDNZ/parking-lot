@@ -10,7 +10,24 @@
 			"name": "Get Parking Lot Status",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "https://lotparking.herokuapp.com/parking-automation/api/v1/api/garage/status",
+					"protocol": "https",
+					"host": [
+						"lotparking",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"parking-automation",
+						"api",
+						"v1",
+						"api",
+						"garage",
+						"status"
+					]
+				}
 			},
 			"response": []
 		},
