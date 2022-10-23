@@ -1,0 +1,11 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /parking-automation/api/v1
+
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: parking-automation
