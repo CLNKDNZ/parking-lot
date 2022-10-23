@@ -5,7 +5,6 @@ import com.parking_automation.parking.domain.Car;
 import com.parking_automation.parking.domain.Jeep;
 import com.parking_automation.parking.domain.Truck;
 import com.parking_automation.parking.domain.Vehicle;
-import com.parking_automation.parking.exception.NotFoundVehicleException;
 import com.parking_automation.parking.model.request.ParkingRequest;
 
 public class VehicleFactory {

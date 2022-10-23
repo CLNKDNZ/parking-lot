@@ -1,7 +1,5 @@
 package com.parking_automation.parking.model.request;
 
-import com.parking_automation.parking.constant.VehicleType;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
