@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "c37f0c0a-2721-4e0a-9d63-1115cb207acb",
+		"name": "ParkingLot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6325655"
+	},
+	"item": [
+		{
+			"name": "Get Parking Lot Status",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Park Vehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"vehicleType\":\"TRUCK\",\n      \"licence\":\"33\",\n      \"colour\":\"Red\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lotparking.herokuapp.com/parking-automation/api/v1/api/garage/park",
+					"protocol": "https",
+					"host": [
+						"lotparking",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"parking-automation",
+						"api",
+						"v1",
+						"api",
+						"garage",
+						"park"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leave From Parking Lot",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \n      \"vehicleLicence\":\"33\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lotparking.herokuapp.com/parking-automation/api/v1/api/garage/leave",
+					"protocol": "https",
+					"host": [
+						"lotparking",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"parking-automation",
+						"api",
+						"v1",
+						"api",
+						"garage",
+						"leave"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
